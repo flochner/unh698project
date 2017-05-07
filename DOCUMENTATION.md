@@ -1,21 +1,5 @@
-# Deploying and Monitoring a Website
+**Deploying and Monitoriing a Website**
 
-#### Services
- - Github
- - Docker Cloud
- - Amazon Web Services
+using Git, DockerCloud and Amazon Web Services services,
 
-#### Software
- - Docker
- - Python
- - Flask
- - Ansible
- - Prometheus
-
-## Tasks
-- [ ] Setup DockerCloud to monitor github repository
-- [ ] Create Dockerfile and 
-- [ ] 
-
-#### Detailed tasks
-##### Setup DockerCloud to monitor github repository
+created with Docker, Python, Flask, Ansible and Prometheus.
