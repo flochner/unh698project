@@ -8,10 +8,6 @@ RUN apt-get update && \
 
 RUN apt-get install -y \
     build-essential \
-#    perl \
-#    python3 \
-#    python3-dev \
-#    python3-setuptools \
     python3-pip
 
 ENV DEBIAN_FRONTEND=teletype
