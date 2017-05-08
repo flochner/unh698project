@@ -1,7 +1,7 @@
 # Deploying and Monitoring a Website
 
 #### Services
- - Github
+ - GitHub
  - Docker Cloud
  - Amazon Web Services
 
@@ -13,16 +13,17 @@
 - Prometheus
 
 ## Tasks
-- [ ] Setup DockerCloud to monitor github repository
+- [ ] Setup Docker Cloud to monitor a GitHub repository
 - [ ] Configure Dockerfile 
 - [ ] 
-- [ ]
 
 ### Detailed tasks
-#### Setup DockerCloud to monitor github repository
+#### Setup Docker Cloud to monitor a GitHub repository
+Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) by allowing developers to easily and quickly create code for testing on any number of platforms.  Operating System images of any configuration can be configured, created, destroyed and then re-created in a repeatable manner, and in short order.  Together with GitHub, re-creation is as simple as pushing to your remote repository and waiting for the results.
 1. Connect Docker Cloud to github
     - Under username, click Settings
-    - In the Source providers section click the plug next to GitHub and fill in your GitHub username
+    - In the Source providers section click the plug icon next to GitHub and fill in your GitHub username
+    - Go to Settings -> Authorized Applications in GitHub and approve Docker Cloud Builder
 2. Create repository
     - Click the plus sign in the top bar
     - For repository name, use the same name as you github repo (probably not required, but why cause confusion)
