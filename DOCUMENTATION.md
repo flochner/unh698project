@@ -37,8 +37,8 @@ Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) b
 4. Configure Builds for specific *tags* from github
     - In the AUTOTEST section click the Internal Pull Requests radio button
     - Click the plus sign next to BUILD RULES.  A new line appears.
-    - Change Branch to Tag, enter this regular expression in the Source block:  */^[0-9.]+$/*
-    - Enter this in the Docker Tag block:  *release-{sourceref}*
+    - Change Branch to Tag, enter this regular expression in the Source block:  `/^[0-9.]+$/`
+    - Enter this in the Docker Tag block:  `release-{sourceref}` 
     - At the bottom of the page click the Save box
 
 #### Configure Dockerfile
