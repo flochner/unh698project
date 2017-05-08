@@ -16,6 +16,7 @@
  - [ ] Familiarize yourself with the Services and Software.
  - [ ] Setup Docker Cloud to monitor a GitHub repository
  - [ ] Configure Dockerfile 
+ - [ ] Use Docker Cloud to perform Unit Tests
  - [ ] 
 
 ### Detailed tasks
@@ -38,7 +39,7 @@ Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) b
     - In the AUTOTEST section click the Internal Pull Requests radio button
     - Click the plus sign next to BUILD RULES.  A new line appears.
     - Change Branch to Tag, enter this regular expression in the Source block:  `/^[0-9.]+$/`
-    - Enter this in the Docker Tag block:  `release-{sourceref}` 
+    - Enter this in the Docker Tag block:  `release-{sourceref}`
     - At the bottom of the page click the Save box
 
 #### Configure Dockerfile
@@ -68,4 +69,49 @@ Now that GitHub and Docker Cloud are linked, it's time to build the image which 
 
  # Open the port that Flask serves pages from
  EXPOSE 5000
+```
+
+#### Use Docker Cloud to perform Unit Tests
+Docker can be run entirely in a local environement, from image building to running the image to hosting web pages, or anything else.  A major benefit to using Docker Cloud to build images is its ability to perform Unit Testing.    
+Once you're satisfied with your server and you've begun building your website, it would be nice to know if it's broken before you go through the whole deployment process.  Units Tests are very small scripts that check for expected conditions, e.g., whether the server is running and returning html.  The way it can tell this is happening is if certain expected text is returned in the server's response, which should be in the html, but could be an error message.  This is especially likely when running a Web Application rather than just serving up static html pages.    
+The process is simple:
+1. Create a `docker-compose.test.yml` file.  This is the main engine for the DOcker Cloud tests.  It can be very complex and perform many functions, but all we need it to do is run a bash script:
+```yaml
+sut:
+  build: .
+  command: ./run_tests.sh
+```
+2. That bash script is simple as well.  All we need it to do is start the Flask web application which is written in Python:
+```bash
+#!/bin/bash
+echo "Running Flask Unit Tests"
+python3 project_unitTests.py
+```
+3. 
+```python
+import unittest
+import projectWeb
+
+class FlaskrTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.app = projectWeb.app.test_client()
+
+    def tearDown(self):
+        pass
+
+    def test_home_page(self):
+        rv = self.app.get('/')
+        assert b'Freddie Lochner' in rv.data
+
+    def test_link_to_my_page(self):
+        rv = self.app.get('/')  
+        assert b'Speed Racer' in rv.data 
+
+    def test_my_topic(self):
+        rv = self.app.get('/SpeedRacer')  
+        assert b'Speed Racer' in rv.data 
+
+if __name__ == '__main__':
+    unittest.main()
 ```
