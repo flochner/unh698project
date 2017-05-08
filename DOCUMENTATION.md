@@ -13,6 +13,7 @@
  - Prometheus
 
 ## Tasks
+ - [ ] Familiarize yourself with the Services and Software.
  - [ ] Setup Docker Cloud to monitor a GitHub repository
  - [ ] Configure Dockerfile 
  - [ ] 
@@ -44,25 +45,27 @@ Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) b
 Now that GitHub and Docker Cloud are linked, it's time to build the image which will run in a Docker virtual machine on an Amazon Web Services server.  Sound complicated?  It is, but we can write a recipe to make it simple, but more importantly, repeatable.  That recipe is the Dockerfile.  Its job is to specify a) the base image to start with (plain Ununtu linux), b) the software we need to run our website (Python / Flask / Prometheus), and c) the files we'll serve up to the Internet (Python / html).
 
 ```Dockerfile
+ # (a)  Base image to use
  FROM ubuntu:xenial 
 
- ENV DEBIAN_FRONTEND=noninteractive
-
+ # Update the package cache so we get the newest software
  RUN apt-get update
  RUN apt-get install -y apt-utils
  
+ # (b)  Because of the multitude of dependencies,
+ # these two packages will get us all the software we need
  RUN apt-get install -y \
     build-essential \
     python3-pip
 
+ # (b)  Upgrade the Python installer and install the web server and monitoring software
  RUN pip3 install --upgrade pip
  RUN pip3 install flask prometheus_client
 
- ENV DEBIAN_FRONTEND=teletype
-
+ # (c)  Copy all of the files in our GitHub repository to a directory on the Docker image (Ansible playbook / website pages / prometheus files)
  WORKDIR /src
  COPY . /src
 
+ # Open the port that Flask serves pages from
  EXPOSE 5000
 ```
-
