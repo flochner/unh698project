@@ -19,14 +19,14 @@
 
 ### Detailed tasks
 #### Setup Docker Cloud to monitor a GitHub repository
-Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) by allowing developers to easily and quickly create code for testing on any number of platforms.  Operating System images of any configuration can be configured, created, destroyed and then re-created in a repeatable manner, and in short order.  Together with GitHub, re-creation is as simple as pushing to your remote repository and waiting for the results.
+Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) by allowing developers to easily and quickly create code for testing on any number of platforms.  Operating System images of any configuration can be configured, created, destroyed and then re-created in a repeatable manner, and in short order.  Together with GitHub, re-creation is as simple as pushing to your remote repository and waiting for the results.  Let's set it up:
 1. Connect Docker Cloud to github
     - Under username, click Settings
     - In the Source providers section click the plug icon next to GitHub and fill in your GitHub username
     - Go to Settings -> Authorized Applications in GitHub and approve Docker Cloud Builder
-2. Create repository
+2. Create Docker Cloud repository
     - Click the plus sign in the top bar
-    - For repository name, use the same name as you github repo (probably not required, but why cause confusion)
+    - For repository name, use the same name as your github repo (probably not required, but why cause confusion)
     - Click Create at the bottom of the page
 3. Configure Repository to monitor github master branch
     - Click Repositories then select your new repo
@@ -41,4 +41,4 @@ Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) b
     - At the bottom of the page click the Save box
 
 #### Configure Dockerfile
-
+Now that GitHub and Docker Cloud are linked, it's time to build the image which will later run in a Docker virtual machine.  To create that repeatability, we'll create a recipe for Docker called a Dockerfile.  
