@@ -6,16 +6,16 @@
  - Amazon Web Services
 
 #### Software
-- Docker
-- Python
-- Flask
-- Ansible
-- Prometheus
+ - Docker
+ - Python
+ - Flask
+ - Ansible
+ - Prometheus
 
 ## Tasks
-- [ ] Setup Docker Cloud to monitor a GitHub repository
-- [ ] Configure Dockerfile 
-- [ ] 
+ - [ ] Setup Docker Cloud to monitor a GitHub repository
+ - [ ] Configure Dockerfile 
+ - [ ] 
 
 ### Detailed tasks
 #### Setup Docker Cloud to monitor a GitHub repository
@@ -41,4 +41,28 @@ Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) b
     - At the bottom of the page click the Save box
 
 #### Configure Dockerfile
-Now that GitHub and Docker Cloud are linked, it's time to build the image which will later run in a Docker virtual machine.  To create that repeatability, we'll create a recipe for Docker called a Dockerfile.  
+Now that GitHub and Docker Cloud are linked, it's time to build the image which will run in a Docker virtual machine on an Amazon Web Services server.  Sound complicated?  It is, but we can write a recipe to make it simple, but more importantly, repeatable.  That recipe is the Dockerfile.  Its job is to specify a) the base image to start with (plain Ununtu linux), b) the software we need to run our website (Python / Flask / Prometheus), and c) the files we'll serve up to the Internet (Python / html).
+
+```Dockerfile
+ FROM ubuntu:xenial 
+
+ ENV DEBIAN_FRONTEND=noninteractive
+
+ RUN apt-get update
+ RUN apt-get install -y apt-utils
+ 
+ RUN apt-get install -y \
+    build-essential \
+    python3-pip
+
+ RUN pip3 install --upgrade pip
+ RUN pip3 install flask prometheus_client
+
+ ENV DEBIAN_FRONTEND=teletype
+
+ WORKDIR /src
+ COPY . /src
+
+ EXPOSE 5000
+```
+
