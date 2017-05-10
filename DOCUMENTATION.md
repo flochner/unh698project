@@ -16,6 +16,7 @@
  - [ ] Familiarize yourself with the Services and Software.
  - [ ] Setup Docker Cloud to monitor a GitHub repository
  - [ ] Configure Dockerfile 
+ - [ ] Build the docker image
  - [ ] Use Docker Cloud to perform Unit Tests
  - [ ] 
 
@@ -71,23 +72,28 @@ Now that GitHub and Docker Cloud are linked, it's time to build the image which 
  EXPOSE 5000
 ```
 
+#### Build the Docker image
+build
+
 #### Use Docker Cloud to perform Unit Tests
 Docker can be run entirely in a local environement, from image building to running the image to hosting web pages, or anything else.  A major benefit to using Docker Cloud to build images is its ability to perform Unit Testing.    
 Once you're satisfied with your server and you've begun building your website, it would be nice to know if it's broken before you go through the whole deployment process.  Units Tests are very small scripts that check for expected conditions, e.g., whether the server is running and returning html.  The way it can tell this is happening is if certain expected text is returned in the server's response, which should be in the html, but could be an error message.  This is especially likely when running a Web Application rather than just serving up static html pages.    
 The process is simple:
-1. Create a `docker-compose.test.yml` file.  This is the main engine for the DOcker Cloud tests.  It can be very complex and perform many functions, but all we need it to do is run a bash script:
+1. Create a `docker-compose.test.yml` file.  This is the main engine for the Docker Cloud tests.  It can be very complex and perform many functions, but all we need it to do is run a bash script:
 ```yaml
 sut:
   build: .
   command: ./run_tests.sh
 ```
-2. That bash script is simple as well.  All we need it to do is start the Flask web application which is written in Python:
+2. That `run_tests.sh` bash script is simple as well.  All we need it to do is start the Unit Tests main function which is written in Python:
 ```bash
 #!/bin/bash
 echo "Running Flask Unit Tests"
 python3 project_unitTests.py
 ```
-3. 
+3. Here's where the fun begins.  In `project_unitTests.py`, the `unittest` package starts the Flask webserver in the `setUp()` function.  We don't need to use the `tearDown()` function, but it needs to be defined so that the `unittest` package can perform testing.  Also required is any number of functions that start with "test_".  Here, we are only performing one:    
+`test_home_page()` retrieves the homepage ('/') and tests the returned text for the phrase "Hello, World!"  If the test passes then you know the Flask webserver can start, and that your homepage is available.   
+Remember, the Unit Tests only run when Docker Cloud is building the image, so when you finally deploy the server, Flask will need to be started in another manner (which we will cover shortly).
 ```python
 import unittest
 import projectWeb
@@ -101,16 +107,8 @@ class FlaskrTestCase(unittest.TestCase):
         pass
 
     def test_home_page(self):
-        rv = self.app.get('/')
-        assert b'Freddie Lochner' in rv.data
-
-    def test_link_to_my_page(self):
-        rv = self.app.get('/')  
-        assert b'Speed Racer' in rv.data 
-
-    def test_my_topic(self):
-        rv = self.app.get('/SpeedRacer')  
-        assert b'Speed Racer' in rv.data 
+        response = self.app.get('/')
+        assert b'Hello, World!' in response.data
 
 if __name__ == '__main__':
     unittest.main()
