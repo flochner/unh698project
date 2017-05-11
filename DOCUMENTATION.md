@@ -55,10 +55,8 @@ Now that GitHub and Docker Cloud are linked, it's time to build the image which 
  RUN apt-get install -y apt-utils
  
  # (b)  Because of the multitude of dependencies,
- # these two packages will get us all the software we need
- RUN apt-get install -y \
-    build-essential \
-    python3-pip
+ # these one package will get us all the software we need
+ RUN apt-get install -y python3-pip
 
  # (b)  Upgrade the Python installer and install the web server and monitoring software
  RUN pip3 install --upgrade pip
@@ -93,7 +91,7 @@ python3 project_unitTests.py
 ```
 3. Here's where the fun begins.  In `project_unitTests.py`, the `unittest` package starts the Flask webserver in the `setUp()` function.  We don't need to use the `tearDown()` function, but it needs to be defined so that the `unittest` package can perform testing.  Also required is any number of functions that start with "test_".  Here, we are only performing one:    
 `test_home_page()` retrieves the homepage ('/') and tests the returned text for the phrase "Hello, World!"  If the test passes then you know the Flask webserver can start, and that your homepage is available.   
-Remember, the Unit Tests only run when Docker Cloud is building the image, so when you finally deploy the server, Flask will need to be started in another manner (which we will cover shortly).
+Remember, the Unit Tests only run when Docker Cloud is building the image, so when you finally deploy the server, Flask will need to be started in another manner which we will cover shortly.
 ```python
 import unittest
 import projectWeb
