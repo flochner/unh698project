@@ -283,3 +283,47 @@ my_AWS_IP: 54.183.17.xxx
 ```
 
 #### Monitor web servers with Prometheus
+Prometheus runs behind the scenes of your website.  It monitors your website and logs metrics that are important to you, such as hit counts, latency, and almost anything you want to know about your website.  It can be configured to email you and even send texts when metrics thresholds are reached.  Your Flask server starts the Prometheus service and, when called, displays a web page with current statistics.  In our code below, we are going to set up lateny and hit counters:
+```python
+import time
+from flask import request
+from flask import Response
+from prometheus_client import Summary, Counter, Histogram
+from prometheus_client.exposition import generate_latest
+from prometheus_client.core import  CollectorRegistry
+from prometheus_client.multiprocess import MultiProcessCollector
+
+_INF = float("inf")
+# Create a metric to track time spent and requests made.
+REQUEST_TIME = Histogram(
+    'app:request_processing_seconds', 
+    'Time spent processing request',
+    ['method', 'endpoint'],
+    buckets=tuple([0.0001, 0.001, .01, .1, 1, _INF])
+)
+REQUEST_COUNTER = Counter(
+    'app:request_count', 
+    'Total count of requests', 
+    ['method', 'endpoint', 'http_status']
+)
+
+def setup_metrics(app):
+    @app.before_request
+    def before_request():
+        request.start_time = time.time()
+
+    @app.after_request
+    def increment_request_count(response):
+        request_latency = time.time() - request.start_time
+        REQUEST_TIME.labels(request.method, request.path
+            ).observe(request_latency)
+
+        REQUEST_COUNTER.labels(request.method, request.path,
+                response.status_code).inc()
+        return response
+
+    @app.route('/metrics')
+    def metrics():
+        return Response(generate_latest(), mimetype="text/plain")
+```
+#### That's all Folks!!!  Enjoy sharing your website with the world!
