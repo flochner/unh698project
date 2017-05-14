@@ -1,25 +1,24 @@
 # Deploying and Monitoring a Website
 
 #### Services
- - GitHub
- - Docker Cloud
- - Amazon Web Services
+ - GitHub [link](https://github.com/features)
+ - Docker Cloud [link](https://cloud.docker.com/swarm/fml2001/dashboard/onboarding/continuous-integration)
+ - Amazon Web Services [link](https://aws.amazon.com/what-is-cloud-computing/?nc2=h_l2_cc)
 
 #### Software
- - Python
- - Flask
- - Docker
- - Ansible
- - Prometheus
+ - Python [link](https://www.python.org/about/gettingstarted/)
+ - Flask [link](http://flask.pocoo.org/docs/0.12/tutorial/#tutorial)
+ - Docker [link](https://www.docker.com/what-docker#/overview)
+ - Ansible [link](https://www.ansible.com/continuous-delivery)
+ - Prometheus [link](https://prometheus.io/docs/introduction/overview/)
 
 ## Tasks
- - [ ] Familiarize yourself with the Services and Software.
- - [ ] Setup Docker Cloud to monitor a GitHub repository
- - [ ] Configure Dockerfile and build Docker image
- - [ ] Build the docker image
- - [ ] Use Docker Cloud to perform Unit Tests
- - [ ] Automate web server builds with Ansible
- - [ ] Monitor web servers with Prometheus
+ - [x] Familiarize yourself with the Services and Software
+ - [ ] [Setup Docker Cloud to monitor a GitHub repository](#Setup-Docker-Cloud-to-monitor-a-GitHub-repository)
+ - [ ] [Configure Dockerfile and build Docker image](#Configure-Dockerfile-and-build-Docker-image)
+ - [ ] [Use Docker Cloud to perform Unit Tests](#Use-Docker-Cloud-to-perform-Unit-Tests)
+ - [ ] [Automate web server builds with Ansible](#Automate-web-server-builds-with-Ansible)
+ - [ ] [Monitor web servers with Prometheus](#Monitor-web-servers-with-Prometheus)
 
 ### Detailed tasks
 #### Setup Docker Cloud to monitor a GitHub repository
@@ -284,4 +283,3 @@ my_AWS_IP: 54.183.17.xxx
 ```
 
 #### Monitor web servers with Prometheus
-
