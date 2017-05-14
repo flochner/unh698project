@@ -13,7 +13,7 @@
  - Prometheus [link](https://prometheus.io/docs/introduction/overview/)
 
 ## Tasks
- - [x] Familiarize yourself with the Services and Software
+ - [x] [Familiarize yourself with the Services and Software](#deploying-and-monitoring-a-website)
  - [ ] [Setup Docker Cloud to monitor a GitHub repository](#setup-docker-cloud-to-monitor-a-github-repository)
  - [ ] [Configure Dockerfile and build Docker image](#configure-dockerfile-and-build-docker-image)
  - [ ] [Use Docker Cloud to perform Unit Tests](#use-docker-cloud-to-perform-unit-tests)
