@@ -2,7 +2,6 @@
 # Install the docker service
 # This task follows the install directions found here:
 # https://docs.docker.com/engine/installation/linux/ubuntu/
-# Replace the xxxxxxx entries with what will the appropriate entries
 - name: install docker dependencies
   apt:
     pkg: '{{ item }}'
