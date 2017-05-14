@@ -14,11 +14,11 @@
 
 ## Tasks
  - [x] Familiarize yourself with the Services and Software
- - [ ] [Setup Docker Cloud to monitor a GitHub repository](#Setup-Docker-Cloud-to-monitor-a-GitHub-repository)
- - [ ] [Configure Dockerfile and build Docker image](#Configure-Dockerfile-and-build-Docker-image)
- - [ ] [Use Docker Cloud to perform Unit Tests](#Use-Docker-Cloud-to-perform-Unit-Tests)
- - [ ] [Automate web server builds with Ansible](#Automate-web-server-builds-with-Ansible)
- - [ ] [Monitor web servers with Prometheus](#Monitor-web-servers-with-Prometheus)
+ - [ ] [Setup Docker Cloud to monitor a GitHub repository](#setup-docker-cloud-to-monitor-a-github-repository)
+ - [ ] [Configure Dockerfile and build Docker image](#configure-dockerfile-and-build-docker-image)
+ - [ ] [Use Docker Cloud to perform Unit Tests](#use-docker-cloud-to-perform-unit-tests)
+ - [ ] [Automate web server builds with Ansible](#automate-web-server-builds-with-ansible)
+ - [ ] [Monitor web servers with Prometheus](#monitor-web-servers-with-prometheus)
 
 ### Detailed tasks
 #### Setup Docker Cloud to monitor a GitHub repository
@@ -272,11 +272,11 @@ projectWeb role `main.yml`:
     status_code: 200
 ```
 Just as in the main Ansible playbooks above, you may want to set variables for some of the above steps to start the web server as your needs may change based on the repository, website filenames and your AWS ip address.    
-The variable filenames in the vars directory correspond to their task scripts(*task* yml and *vars* yml are both named `main.yml`).
+The variable filenames in the vars directory correspond to their task scripts (for example, the yml files in the *task* and *vars* directories are both named `main.yml`).
 ```yaml
 ---
-# Here we define variables in a key: value setting
-# that will be used in the projectWeb role.
+# Here we define variables in a key:value setting
+# which will be used in the 'projectWeb' role.
 projectWeb_image: fml2001/unh698project
 projectWeb_command: python3 /src/projectWeb.py
 my_AWS_IP: 54.183.17.xxx
