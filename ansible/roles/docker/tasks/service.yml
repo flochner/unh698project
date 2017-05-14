@@ -1,0 +1,8 @@
+---
+# This should ensure that the docker service is running.
+# See the following for usage hints:
+# http://docs.ansible.com/ansible/service_module.html
+- name: Ensure docker service is started
+  service:
+    name: docker
+    state: started

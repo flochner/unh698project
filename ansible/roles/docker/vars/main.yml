@@ -1,0 +1,4 @@
+---
+# Here we define variables in a key: value setting
+# that will be used in the docker role.
+student_name: flochner

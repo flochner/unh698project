@@ -1,0 +1,11 @@
+---
+# Make it a little easier for you by adding your
+# student account to the docker linux group on this host.
+# Hints:
+#   http://docs.ansible.com/ansible/user_module.html
+#   A variable is being used here
+- name: Adding user to group docker
+  user:
+    name: "{{ student_name }}"
+    group: docker
+    append: yes
