@@ -6,7 +6,7 @@
   become: true
   vars:
     projectWeb_environment: production
-    projectWeb_image_version: release-0.0.3
+    projectWeb_image_version: release-0.1.0
     projectWeb_host_port: 8080
     projectWeb_container_port: 5000
   roles:
