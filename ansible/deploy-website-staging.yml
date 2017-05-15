@@ -5,7 +5,7 @@
   become: true
   vars:
     projectWeb_environment: staging
-    projectWeb_image_version: release-0.0.5
+    projectWeb_image_version: release-0.1.0
     projectWeb_host_port: 8081
     projectWeb_container_port: 5000
   roles:
