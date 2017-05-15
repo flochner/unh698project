@@ -1,0 +1,6 @@
+---
+# Here we define variables in a key: value setting
+# that will be used in the projectWeb role.
+projectWeb_image: fml2001/unh698project
+projectWeb_command: python3 /src/projectWeb.py
+my_AWS_IP: 54.215.224.185

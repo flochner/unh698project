@@ -1,0 +1,11 @@
+---
+# This playbook configures the local machine to run docker.
+# When fixed, the playbook should install and run the
+# community edition of docker found from docker's official
+# apt repository.
+- name: Install the community edition of docker
+  hosts: localhost
+  become: true
+  roles:
+    - docker
+  

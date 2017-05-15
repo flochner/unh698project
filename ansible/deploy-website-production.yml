@@ -1,0 +1,14 @@
+---
+# The production version contains the limited text.  We'll just test for "Freddie Lochner" This version of the website
+# should be available on port 8080 of your server.
+- name: Deploy the production version of your website based on the previous tag of your docker-cloud-test image
+  hosts: localhost
+  become: true
+  vars:
+    projectWeb_environment: production
+    projectWeb_image_version: release-0.0.3
+    projectWeb_host_port: 8080
+    projectWeb_container_port: 5000
+  roles:
+    - projectWeb
+  

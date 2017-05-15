@@ -1,0 +1,48 @@
+---
+# Install the docker service
+# This task follows the install directions found here:
+# https://docs.docker.com/engine/installation/linux/ubuntu/
+- name: install docker dependencies
+  apt:
+    pkg: '{{ item }}'
+    update_cache: yes
+    cache_valid_time: 1800
+  with_items:
+    - apt-transport-https
+    - ca-certificates 
+    - curl
+    - software-properties-common
+
+# Add docker's GPG key
+# http://docs.ansible.com/ansible/apt_key_module.html
+- name: Setup docker repository key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  notify: apt-get update
+
+# This command runs on the server to determine what version of ubuntu is running
+# The command's output to `lsb_release -c -s` is saved in `release` and
+# available for the next step.
+- name: Get release
+  command: lsb_release -c -s
+  register: release
+
+# Here we add docker's repository to allow the system to do an apt-get install of
+# official docker packages.
+# http://docs.ansible.com/ansible/apt_repository_module.html
+- name: Add docker repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release.stdout }} stable
+    state: present
+    filename: docker
+  notify: apt-get update
+
+# Install the docker service.  Fix the name of the package.
+# http://docs.ansible.com/ansible/apt_module.html
+- name: Install the latest version of docker community edition
+  apt:
+    pkg: docker-ce
+    update_cache: yes
+    cache_valid_time: 1800

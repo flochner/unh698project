@@ -1,0 +1,6 @@
+---
+# Include a series of tasks for setting up a docker service
+
+- include: install.yml
+- include: user.yml
+- include: service.yml
