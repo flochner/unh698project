@@ -13,6 +13,10 @@ class FlaskrTestCase(unittest.TestCase):
         rv = self.app.get('/')
         assert b'Freddie Lochner' in rv.data
 
+    def test_Speed_page(self):
+        rv = self.app.get('/SpeedRacer')
+        assert b'Speed Racer' in rv.data
+
 if __name__ == '__main__':
     unittest.main()
     
