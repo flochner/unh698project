@@ -1,26 +1,24 @@
 # Deploying and Monitoring a Website
 
-#### Services
- - GitHub [link](https://github.com/features)
- - Docker Cloud [link](https://cloud.docker.com/swarm/fml2001/dashboard/onboarding/continuous-integration)
- - Amazon Web Services [link](https://aws.amazon.com/what-is-cloud-computing/?nc2=h_l2_cc)
-
-#### Software
- - Python [link](https://www.python.org/about/gettingstarted/)
- - Flask [link](http://flask.pocoo.org/docs/0.12/tutorial/#tutorial)
- - Docker [link](https://www.docker.com/what-docker#/overview)
- - Ansible [link](https://www.ansible.com/continuous-delivery)
- - Prometheus [link](https://prometheus.io/docs/introduction/overview/)
-
 ## Tasks
- - [x] [Familiarize yourself with the Services and Software](#deploying-and-monitoring-a-website)
+ - [x] [Familiarize yourself with the Services and Software](#services-and-software)
  - [ ] [Setup Docker Cloud to monitor a GitHub repository](#setup-docker-cloud-to-monitor-a-github-repository)
  - [ ] [Configure Dockerfile and build Docker image](#configure-dockerfile-and-build-docker-image)
  - [ ] [Use Docker Cloud to perform Unit Tests](#use-docker-cloud-to-perform-unit-tests)
  - [ ] [Automate web server builds with Ansible](#automate-web-server-builds-with-ansible)
  - [ ] [Monitor web servers with Prometheus](#monitor-web-servers-with-prometheus)
 
-### Detailed tasks
+#### Services and Software
+ - GitHub [link](https://github.com/features)
+ - Docker Cloud [link](https://cloud.docker.com/swarm/fml2001/dashboard/onboarding/continuous-integration)
+ - Amazon Web Services [link](https://aws.amazon.com/what-is-cloud-computing/?nc2=h_l2_cc)
+  
+ + Python [link](https://www.python.org/about/gettingstarted/)
+ + Flask [link](http://flask.pocoo.org/docs/0.12/tutorial/#tutorial)
+ + Docker [link](https://www.docker.com/what-docker#/overview)
+ + Ansible [link](https://www.ansible.com/continuous-delivery)
+ + Prometheus [link](https://prometheus.io/docs/introduction/overview/)
+
 #### Setup Docker Cloud to monitor a GitHub repository
 Docker Cloud enhances Continuous Integration and Continuous Deployment (CI/CD) by allowing developers to easily and quickly create code for testing on any number of platforms.  Operating System images of any configuration can be configured, created, destroyed and then re-created in a repeatable manner, and in short order.  Together with GitHub, re-creation is as simple as pushing to your remote repository and waiting for the results.  Let's set it up:
 1. Connect Docker Cloud to github
