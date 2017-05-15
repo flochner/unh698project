@@ -325,3 +325,6 @@ def setup_metrics(app):
         return Response(generate_latest(), mimetype="text/plain")
 ```
 #### That's all Folks!!!  Enjoy sharing your website with the world!
+
+Freddie Lochner 
+15 May 2017
