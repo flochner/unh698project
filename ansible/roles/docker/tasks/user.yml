@@ -6,6 +6,6 @@
 #   A variable is being used here
 - name: Adding user to group docker
   user:
-    name: "flochner"
+    name: flochner
     group: docker
     append: yes
