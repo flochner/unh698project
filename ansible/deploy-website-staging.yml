@@ -4,10 +4,10 @@
   hosts: localhost
   become: true
   vars:
-    unh698_environment: staging
-    unh698_image_version: release-0.0.4
-    unh698_host_port: 8081
-    unh698_container_port: 5000
+    projectWeb_environment: staging
+    projectWeb_image_version: release-0.0.5
+    projectWeb_host_port: 8081
+    projectWeb_container_port: 5000
   roles:
     - projectWeb
   
