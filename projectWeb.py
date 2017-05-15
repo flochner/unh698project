@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+import os
+from flask import Flask, render_template, send_from_directory
 from prometheus_metrics import setup_metrics
 
 app = Flask(__name__)
