@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, send_from_directory
 from prometheus_metrics import setup_metrics
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 setup_metrics(app)
 
@@ -44,7 +44,7 @@ def fakeArcher_db():
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(app.static_folder, 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
