@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Speed Racer template</title>
+</head>
+<body>
+
+<h1>Speed Racer</h1>
+
+<img src="http://www.pivotalkids.com/speed_racer.JPG">
+
+<p>Speed Racer is the adventures of a young racer car driver, his fabulous car, and his close-knit group of family and friends. Originally a Japanese comic strip called "Mach Go Go Go", the animated series Speed Racer has now become a cult classic and one of the most popular "Japanimated" series to hit the U.S. airwaves. Featuring Speed and his ultimate driving machine the Mach 5, Speed Racer combines racing with intrigue. Joining Speed is an unforgettable cast of characters, including Mom and Pops Racer, girlfriend Trixie, little brother Spritle and his pet monkey Chim Chim, mechanic Sparky, and the mysterious Racer X.
+
+<p>Speed Racer began as a Japanese "Manga" entitled Mach Go Go Go created by Tatsunoko Productions in 1966. In 1967, the 52 episodes of the series were dubbed into English and syndicated nationally on television. For nearly 20 years, Speed Racer ran in the afternoons five days a week. During this time the world of Speed Racer was deeply etched into the memories of millions of youngsters who would rush home from school to see the show.
+
+<h3>Racer Family</h3>
+<ul>
+    {% for item in family %}
+        <li>{{ item.name }} - {{ item.castMember }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Other characters</h3>
+<ul>
+    {% for item in others %}
+        <li>{{ item.name }} - {{ item.castMember }}</a></li>
+    {% endfor %}
+</ul>
+
+Image and description credit: <cite><a href="http://www.pivotalkids.com/speed_racer.htm">Pivotal Kids</a></cite>
+
+</body>
+</html>
