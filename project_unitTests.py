@@ -17,10 +17,6 @@ class FlaskrTestCase(unittest.TestCase):
         rv = self.app.get('/SpeedRacer')
         assert b'Speed Racer' in rv.data
 
-    def test_Archer_page(self):
-        rv = self.app.get('/Archer')
-        assert b'Archer' in rv.data
-
 if __name__ == '__main__':
     unittest.main()
     
