@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Archer</title>
+</head>
+<body><font face=helvetica>
+
+<h1>Archer</h1>
+
+<img src="http://www.pivotalkids.com/speed_racer.JPG">
+
+<p>Archer blah
+
+<p>Archer blah blah
+
+<h3>ISIS Agents</h3>
+<ul>
+    {% for item in agents %}
+        <li>{{ item.name }} - {{ item.castMember }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Other Characters</h3>
+<ul>
+    {% for item in others %}
+        <li>{{ item.name }} - {{ item.castMember }}</a></li>
+    {% endfor %}
+</ul>
+
+Image and description credit: <cite><a href="http://www.pivotalkids.com/speed_racer.htm">Pivotal Kids</a></cite>
+
+</font></body>
+</html>
